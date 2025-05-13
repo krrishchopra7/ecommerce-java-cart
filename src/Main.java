@@ -15,5 +15,8 @@ public class Main {
         cart.displayCart();
 
         System.out.println("Total price: $" + cart.calculateTotal());
+
+        Checkout checkout = new Checkout(cart);
+        checkout.processCheckout();
     } 
 }
