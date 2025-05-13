@@ -1,37 +1,39 @@
 import java.util.ArrayList;
-public class ShoppingCart {
 
-    private ArrayList<Product> cart;
+public class ShoppingCart {
+    private ArrayList<Product> products;
 
     public ShoppingCart() {
-        cart = new ArrayList<>();
+        products = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
-        cart.add(product);
+        products.add(product);
     }
 
-    public void removeProduct(Product product) {
-        cart.remove(product);
+    public void removeProduct(String productName) {
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(productName)) {
+                products.remove(product);
+                System.out.println(productName + " has been removed from your cart.");
+                return;
+            }
+        }
+        System.out.println("Product not found in the cart.");
     }
 
     public void displayCart() {
-        if (cart.isEmpty()) {
-            System.out.println("Your cart is empty!");
-        } else {
-            System.out.println("Your Shopping Cart:");
-            for (Product product : cart) {
-                System.out.println(product.displayProduct());
-            }
+        System.out.println("Your Shopping Cart:");
+        for (Product product : products) {
+            System.out.println("Product: " + product.getName() + ", Price: $" + product.getPrice());
         }
     }
 
     public double calculateTotal() {
-        double total = 0.0;
-        for (Product product : cart) {
+        double total = 0;
+        for (Product product : products) {
             total += product.getPrice();
         }
         return total;
     }
 }
-

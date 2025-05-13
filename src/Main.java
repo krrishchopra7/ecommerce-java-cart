@@ -14,9 +14,11 @@ public class Main {
 
         cart.displayCart();
 
+        cart.removeProduct("Smartphone");
+
         System.out.println("Total price: $" + cart.calculateTotal());
 
         Checkout checkout = new Checkout(cart);
-        checkout.processCheckout();
+        checkout.processCheckout(); 
     } 
 }
